@@ -7,7 +7,6 @@ const App = () => {
   return (
     <>
       <NavBar />
-      <h1>Testing:</h1>
       <Routes>
         <Route path="/sign-up" element={<SignUpForm />} />
       </Routes>
