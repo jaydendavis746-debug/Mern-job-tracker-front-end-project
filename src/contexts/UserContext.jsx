@@ -1,20 +1,22 @@
 import { createContext, useState } from "react";
 
+
+const UserContext = createContext();
+
 const getUserFromToken = () =>{
 
     const token = localStorage.getItem('token');
 
     if(!token) return null;
 
-    return JSON.parson(atob(token.split ('.')[1])).payload;
-}
+    return JSON.parse(atob(token.split ('.')[1])).payload;
+};
 
-const UserContext = createContext();
 
 // function UserProvider({ children }) {
 const UserProvider = ({ children }) => {
     
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(getUserFromToken());
     const value = { user, setUser };
 
     return (
