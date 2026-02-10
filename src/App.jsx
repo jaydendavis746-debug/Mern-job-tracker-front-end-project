@@ -7,7 +7,7 @@ import SignUpForm from "./components/SignUpForm/SignUpForm";
 import SignInForm from "./components/SignInForm/SignInForm";
 import Landing from "./components/Landing/Landing";
 import Dashboard from "./components/Dashboard/Dashboard";
-import JobCard from "./components/JobCard/JobCard";
+import JobCards from "./components/JobCards/JobCards";
 
 import { UserContext } from "./contexts/UserContext";
 
@@ -37,7 +37,7 @@ const App = () => {
         <Route path='/' element={user ? <Dashboard /> : <Landing />} />
         {user ? (
           <>
-            <Route path='/jobs' element={< JobCard jobs={jobs} />} />
+            <Route path='/jobs' element={< JobCards jobs={jobs} />} />
           </>
         ) : (
           <>
