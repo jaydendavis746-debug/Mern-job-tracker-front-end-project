@@ -32,16 +32,25 @@ const JobCard = () => {
             <section>
                 <header>
                     <button>Edit:</button>
-                    <select></select>
+
+                    <select>
+                        <option value="Applied">Applied</option>
+                        <option value="Interviewing">Interviewing</option>
+                        <option value="Offer">Offer</option>
+                        <option value="Rejected">Rejected</option>
+                        <option value="Prospective">Prospective</option>
+                    </select>
+
                     <h2>{job.position.toUpperCase()}</h2>
                     <h3 className="subheading">Company: {job.companyName}</h3>
                     <h3 className="subheading">Type: {job.workArrangement}</h3>
                     <h3 className="subheading">Location: {job.workArrangement !== "Remote" ? job.location : "N/A"} </h3>
                     <h3 className="subheading">Salary: {job.salary}</h3>
+
                     <p>Job Type:</p>
                     <p>Employer: </p>
+
                     <button>Delete: </button>
-                    
                 </header>
             </section>
             <section>
