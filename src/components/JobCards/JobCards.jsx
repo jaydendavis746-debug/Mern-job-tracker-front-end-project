@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 
-const JobCard = (props) => {
+const JobCards = (props) => {
     console.log("Jobs-props:", props);
 
     return (
@@ -15,4 +15,4 @@ const JobCard = (props) => {
     );
 };
 
-export default JobCard;
+export default JobCards;
