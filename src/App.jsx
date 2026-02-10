@@ -1,10 +1,10 @@
 
 import { useContext, useState, useEffect } from "react";
 import { Routes, Route } from "react-router";
+
 import NavBar from "./components/NavBar/NavBar";
 import SignUpForm from "./components/SignUpForm/SignUpForm";
 import SignInForm from "./components/SignInForm/SignInForm";
-
 import Landing from "./components/Landing/Landing";
 import Dashboard from "./components/Dashboard/Dashboard";
 import JobCards from "./components/JobCards/JobCards";
@@ -16,7 +16,7 @@ import * as jobService from './services/jobService'
 
 const App = () => {
 
-  const {user} = useContext(UserContext)
+  const {user} = useContext(UserContext);
 
   const [jobs, setJobs] = useState([]);
 

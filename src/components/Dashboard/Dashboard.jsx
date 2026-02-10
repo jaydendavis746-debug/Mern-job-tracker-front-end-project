@@ -11,7 +11,7 @@ const Dashboard = () => {
     <main>
       <h1>Welcome, {user.username}</h1>
       <p>
-        This is the dashboard page where you can then navigate to you jobcards page .
+        This is the dashboard page where you can then navigate to your job cards page.
       </p>
     </main>
   );
