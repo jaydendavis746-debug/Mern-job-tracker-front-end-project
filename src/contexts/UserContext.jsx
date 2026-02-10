@@ -1,5 +1,14 @@
 import { createContext, useState } from "react";
 
+const getUserFromToken = () =>{
+
+    const token = localStorage.getItem('token');
+
+    if(!token) return null;
+
+    return JSON.parson(atob(token.split ('.')[1])).payload;
+}
+
 const UserContext = createContext();
 
 // function UserProvider({ children }) {
