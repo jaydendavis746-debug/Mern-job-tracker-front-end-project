@@ -7,13 +7,13 @@ const JobCards = (props) => {
     return (
         <main>
             {props.jobs.map((job) => (
-                <div>
-                    <Link key={job._id} to={`/jobs/${job._id}`}>
+                <div key={job._id}>
+                    <Link to={`/jobs/${job._id}`}>
                         {job.position}
                     </Link>
                 </div>
             ))}
-        </main>      
+        </main>
     );
 };
 
