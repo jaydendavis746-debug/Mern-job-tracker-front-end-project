@@ -7,11 +7,11 @@ import SignUpForm from "./components/SignUpForm/SignUpForm";
 import SignInForm from "./components/SignInForm/SignInForm";
 import Landing from "./components/Landing/Landing";
 import Dashboard from "./components/Dashboard/Dashboard";
-import JobCards from "./components/JobCards/JobCards";
+import JobCard from "./components/JobCard/JobCard";
 
 import { UserContext } from "./contexts/UserContext";
 
-import * as jobService from './services/jobService'
+import * as jobService from './services/jobService';
 
 
 const App = () => {
@@ -20,18 +20,15 @@ const App = () => {
 
   const [jobs, setJobs] = useState([]);
 
-useEffect (()=>{
+  useEffect (() => {
+    const fetchAllJobs = async () => {
+      const jobsData = await jobService.index();
+      // console.log('Jobs Data:', jobsData);
+      setJobs(jobsData);
+    };
 
-        const fetchAllJobs = async () =>{
-        const jobsData = await jobService.index();
-
-        setJobs(jobsData);
-  
-  }
-
-  if (user) fetchAllJobs();
+    if (user) fetchAllJobs();
   }, [user]);
-  
   
   return (
     <>
@@ -40,7 +37,7 @@ useEffect (()=>{
         <Route path='/' element={user ? <Dashboard /> : <Landing />} />
         {user ? (
           <>
-            <Route path='/jobs' element={< JobCards jobs={jobs} />} />
+            <Route path='/jobs' element={< JobCard jobs={jobs} />} />
           </>
         ) : (
           <>
