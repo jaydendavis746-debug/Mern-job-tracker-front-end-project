@@ -16,7 +16,20 @@ const index = async ()=>{
 
 };
 
+const show = async (jobId) => {
+    try {
+        const res = await fetch(`${BASE_URL}/${jobId}`, {
+            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+        });
+
+        return res.json();
+    } catch (err) {
+        console.log(err);
+    }
+};
+
 
 export {
     index,
+    show
 }

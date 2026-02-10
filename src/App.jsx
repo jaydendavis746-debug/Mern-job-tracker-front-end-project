@@ -8,6 +8,7 @@ import SignInForm from "./components/SignInForm/SignInForm";
 import Landing from "./components/Landing/Landing";
 import Dashboard from "./components/Dashboard/Dashboard";
 import JobCards from "./components/JobCards/JobCards";
+import JobCard from "./components/JobCard/JobCard";
 
 import { UserContext } from "./contexts/UserContext";
 
@@ -38,6 +39,8 @@ const App = () => {
         {user ? (
           <>
             <Route path='/jobs' element={< JobCards jobs={jobs} />} />
+            <Route path='/jobs/:jobId' element={<JobCard />}
+            />
           </>
         ) : (
           <>
