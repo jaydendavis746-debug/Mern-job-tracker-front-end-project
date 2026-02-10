@@ -17,7 +17,7 @@ const NavBar = () => {
                 <ul>
                     <li>Welcome, {user.username}</li>
                     <li><Link to='/'>Dashboard (Logo/name)</Link></li>
-                    <li><Link to='/jobs'>JobCards</Link></li>
+                    <li><Link to='/jobs'>Job Cards</Link></li>
                     <li><Link to='/' onClick={handleSignOut}>Sign Out</Link></li>
                     
                 </ul>
