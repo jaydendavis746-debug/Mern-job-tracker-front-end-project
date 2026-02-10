@@ -10,11 +10,6 @@ const NavBar = () => {
         setUser(null)
     }
 
-    const handleSignIn = ()=>{
-
-        
-    }
-
 
     return (
         <nav>
@@ -26,7 +21,7 @@ const NavBar = () => {
             ) : (
                 <ul>
                     <li><Link to='/sign-up'>Sign Up</Link></li>
-                     <li><Link to='/sign-in' onClick={handleSignIn}>Sign In</Link></li>
+                     <li><Link to='/sign-in'>Sign In</Link></li>
                     
                 </ul>
             )}
