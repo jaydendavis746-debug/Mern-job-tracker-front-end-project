@@ -18,6 +18,7 @@ const NavBar = () => {
                     <li>Welcome, {user.username}</li>
                     <li><Link to='/'>Dashboard (Logo/name)</Link></li>
                     <li><Link to='/jobs'>Job Cards</Link></li>
+                    <li><Link to='/jobs/new'>New Job Card</Link></li>
                     <li><Link to='/' onClick={handleSignOut}>Sign Out</Link></li>
                     
                 </ul>

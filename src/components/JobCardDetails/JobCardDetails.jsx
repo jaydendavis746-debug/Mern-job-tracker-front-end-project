@@ -1,39 +1,49 @@
-import { useParams } from "react-router";
-import { useState, useEffect } from "react";
+import { useParams, Link } from "react-router";
+import { useState, useEffect, useContext } from "react";
 import * as jobService from "../../services/jobService";
+import NoteForm from "../NoteForm/NoteForm"
 
-const JobCard = () => {
+import { UserContext } from "../../contexts/UserContext";
+
+const JobCardDetails = (props) => {
     const { jobId } = useParams();
     const [job, setJob] = useState(null);
+    //console.log("Job Id:", jobId);
 
-    console.log("Job Id:", jobId);
+
+    
 
     useEffect(() => {
         
         const fetchJob = async () => {
             const jobData = await jobService.show(jobId);
             setJob(jobData);
-        };
+        };+
 
         fetchJob();
     }, [jobId]);
 
-    console.log("Job state:", job);
+    //console.log("Job state:", job);
     
     if (!job) return (
         <main>Loading...</main>
     );
 
-    //! Form is a work in progress
+  
+
+  const handleAddNote = async (noteFormData) => {
+    const newNote = await jobService.createNote(jobId, noteFormData)
+    setJob({...job, notes: [...job.notes, newNote]})
+  };
+
 
     return (
         // <main>Job Card</main>
         <main>
             <section>
                 <header>
-                    <button onClick="">Edit</button>
+                    <button ><Link to={`/jobs/${jobId}/edit`} >Edit</Link></button>
 
-{/* <label> used for accessiblity when using a dropdown menu */}
                     <label for="status">Status:</label>
                     <select name="status">
                         <option value="Applied">Applied</option>
@@ -47,21 +57,25 @@ const JobCard = () => {
                     <h3 className="subheading">Company: {job.companyName}</h3>
                     <h3 className="subheading">Type: {job.workArrangement}</h3>
                     <h3 className="subheading">Location: {job.workArrangement !== "Remote" ? job.location : "N/A"} </h3>
-                    <h3 className="subheading">Salary: £{job.salary}/year, approximately €{job.salary * 1.15}/year</h3>
+                    <h3 className="subheading">Salary: £{job.salary}</h3>
 
                     <p>Job Type: {job.jobType}</p>
                     <p>Employer: {job.employer}</p>
 
                     <textarea placeholder="Add Job Description"></textarea>
 
-                    <button onClick="">Delete</button>
+                    <button onClick={()=> props.handleDeleteJob(jobId)} >Delete</button>
                 </header>
             </section>
             {/* Below are Notes */}
             <section>
                 <h4>Notes:</h4>
-                {!job.notes.length && <p>There are no notes.</p>}
-                {job.notes.map((note) => (
+                <NoteForm  handleAddNote={handleAddNote}/>
+
+              {job.notes.length === 0
+                     ? (<p>There are no notes.</p>
+                ):(
+                     job.notes.map((note) => (
                     <article key={note._id}>
                         <div>
                             <p>
@@ -70,11 +84,11 @@ const JobCard = () => {
                         </div>
                         <p>{note.text}</p>
                     </article>
-        ))}
-                <textarea placeholder="Add Notes"></textarea>
+        )))
+    }  
             </section>
         </main>
     );
 };
 
-export default JobCard;
+export default JobCardDetails;
