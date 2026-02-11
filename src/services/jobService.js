@@ -114,6 +114,24 @@ console.log(err)
 };
 
 
+const deleteNote = async (jobId, noteId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${jobId}/notes/${noteId}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+     
+    });
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+
 export {
   index,
   show,
@@ -121,6 +139,7 @@ export {
   createNote,
   deleteJob,
   update,
+  deleteNote,
 }
 
 

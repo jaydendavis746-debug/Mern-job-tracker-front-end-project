@@ -38,6 +38,12 @@ const JobCardDetails = (props) => {
     setJob({...job, notes: [...job.notes, newNote]})
   };
 
+  const handleDeleteNote = async (noteId) => {
+    console.log('noteId:', noteId);
+    const deletedNote = await jobService.deleteNote(jobId, noteId)
+    setJob({...job, notes: job.notes.filter((note) => note._id !== noteId),});
+  };
+
 
     return (
         // <main>Job Card</main>
@@ -81,11 +87,11 @@ const JobCardDetails = (props) => {
                      job.notes.map((note) => (
                     <article key={note._id}>
                         <div>
-                            <p>
-                                {`Added on ${new Date(note.createdAt).toLocaleDateString()}`}
-                            </p>
+                            <button onClick={() => handleDeleteNote(note._id)}> Delete </button>
+                            <p>{note.text}</p>
+                        <p> {`Added on ${new Date(note.createdAt).toLocaleDateString()}`} </p>
                         </div>
-                        <p>{note.text}</p>
+                        
                     </article>
         )))
     }  
