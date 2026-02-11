@@ -114,6 +114,24 @@ console.log(err)
 };
 
 
+// src/services/hootService.js
+
+const updateNotes = async (jobId, notesId, notesFormData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${jobId}/comments/${commentId}`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(jobFormData),
+    });
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export {
   index,
   show,
@@ -121,6 +139,7 @@ export {
   createNote,
   deleteJob,
   update,
-}
+  updateNotes,
+};
 
 

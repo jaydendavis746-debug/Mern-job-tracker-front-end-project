@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router";
 import { useState, useEffect, useContext } from "react";
 import * as jobService from "../../services/jobService";
 import NoteForm from "../NoteForm/NoteForm"
+import NotesList from "../NotesList/NotesList"
 
 import { UserContext } from "../../contexts/UserContext";
 
@@ -35,6 +36,15 @@ const JobCardDetails = (props) => {
     const newNote = await jobService.createNote(jobId, noteFormData)
     setJob({...job, notes: [...job.notes, newNote]})
   };
+
+  const handleUpdateNote = (noteId, updatedData) => {
+  setJob(prev => ({
+    ...prev,
+    notes: prev.notes.map(note =>
+      note._id === noteId ? { ...note, ...updatedData } : note
+    )
+  }));
+};
 
 
     return (
@@ -71,8 +81,9 @@ const JobCardDetails = (props) => {
             <section>
                 <h4>Notes:</h4>
                 <NoteForm  handleAddNote={handleAddNote}/>
+                <NotesList notes={job.notes} handleUpdateNote={handleUpdateNote}/>
 
-              {job.notes.length === 0
+              {/* {job.notes.length === 0
                      ? (<p>There are no notes.</p>
                 ):(
                      job.notes.map((note) => (
@@ -85,7 +96,7 @@ const JobCardDetails = (props) => {
                         <p>{note.text}</p>
                     </article>
         )))
-    }  
+    }   */}
             </section>
         </main>
     );
