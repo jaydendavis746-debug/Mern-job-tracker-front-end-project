@@ -57,7 +57,7 @@ const handleUpdateJob = async (jobId, jobFormData)=>{
    setJobs(jobs.map((job) => (jobId === job._id ? updatedJob : job)));
    navigate(`/jobs/${jobId}`)
 
-}
+};
 
   return (
     <>

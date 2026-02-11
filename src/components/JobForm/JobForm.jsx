@@ -7,7 +7,7 @@ import * as jobService from '../../services/jobService';
 
 const JobForm = (props ) => {
 
-    const {jobId} = useParams();
+  const {jobId} = useParams();
     
 
   const [formData, setFormData] = useState({
@@ -23,12 +23,13 @@ const JobForm = (props ) => {
   });
 
   const handleChange = (evt) => {
-    setFormData({ ...formData, [evt.target.name] : evt.target.value});
+    setFormData({ ...formData, [evt.target.name]: evt.target.value});
   };
 
   
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    // console.log("Form Data:", formData);
 
     if(jobId){
         props.handleUpdateJob(jobId, formData)
@@ -68,44 +69,48 @@ const JobForm = (props ) => {
 
   return (
     <main>
-        <h1>{jobId ? 'Edit Job Card' : 'New Job Card'}</h1>
+      <h1>{jobId ? 'Edit Job Card' : 'New Job Card'}</h1>
       <form onSubmit={handleSubmit}>
 
         
-        <label>Position</label>
+        <label htmlFor="position">Position</label>
         <input
           required
           type="text"
           name="position"
+          id="position"
           value={formData.position}
           onChange={handleChange}
         />
 
         
-        <label>Company Name</label>
+        <label htmlFor="company">Company Name</label>
         <input
           required
           type="text"
           name="companyName"
+          id="company"
           value={formData.companyName}
           onChange={handleChange}
         />
 
        
-        <label>Salary</label>
+        <label htmlFor="salary">Salary</label>
         <input
           type="number"
           min="0"
           name="salary"
+          id="salary"
           value={formData.salary}
           onChange={handleChange}
         />
 
        
-        <label>Job Type</label>
+        <label htmlFor="type">Job Type</label>
         <select
           required
           name="jobType"
+          id="type"
           value={formData.jobType}
           onChange={handleChange}
         >
@@ -118,10 +123,11 @@ const JobForm = (props ) => {
         </select>
 
         
-        <label>Work Arrangement</label>
+        <label htmlFor="arrangement">Work Arrangement</label>
         <select
           required
           name="workArrangement"
+          id="arrangement"
           value={formData.workArrangement}
           onChange={handleChange}
         >
@@ -131,37 +137,41 @@ const JobForm = (props ) => {
         </select>
 
        
-        <label>Location</label>
+        <label htmlFor="location">Location</label>
         <input
           type="text"
           name="location"
+          id="location"
           value={formData.location}
           onChange={handleChange}
         />
 
         
-        <label>Description</label>
+        <label htmlFor="description">Description</label>
         <textarea
           required
           name="description"
+          id="description"
           value={formData.description}
           onChange={handleChange}
         />
 
        
-        <label>Employer</label>
+        <label htmlFor="employer">Employer</label>
         <input
           required
           type="text"
           name="employer"
+          id="employer"
           value={formData.employer}
           onChange={handleChange}
         />
 
         
-        <label>Status</label>
+        <label htmlFor="status">Status</label>
         <select
           name="status"
+          id="status"
           value={formData.status}
           onChange={handleChange}
         >
