@@ -7,6 +7,8 @@ import { signIn } from '../../services/authService';
 
 import { UserContext } from '../../contexts/UserContext';
 
+import Styles from './SignInForm.module.css'
+
 const SignInForm = () => {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
@@ -40,8 +42,10 @@ const SignInForm = () => {
       <h1>Sign In</h1>
       <p>{message}</p>
       <form autoComplete='off' onSubmit={handleSubmit}>
+
+      {/* <img src={Logo} alt='An atom' /> */}
+
         <div>
-          <label htmlFor='email'>Username:</label>
           <input
             type='text'
             autoComplete='off'
@@ -50,10 +54,10 @@ const SignInForm = () => {
             name='username'
             onChange={handleChange}
             required
+            placeHolder='Username'
           />
         </div>
         <div>
-          <label htmlFor='password'>Password:</label>
           <input
             type='password'
             autoComplete='off'
@@ -62,6 +66,7 @@ const SignInForm = () => {
             name='password'
             onChange={handleChange}
             required
+            placeholder='Password'
           />
         </div>
         <div>

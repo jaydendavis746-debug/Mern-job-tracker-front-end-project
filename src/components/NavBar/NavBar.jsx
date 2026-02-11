@@ -2,6 +2,12 @@ import { useContext } from "react";
 import { Link } from "react-router";
 import { UserContext } from "../../contexts/UserContext";
 
+import styles from './NavBar.module.css';
+
+import Logo from '../../assets/logo.svg';
+
+
+
 const NavBar = () => {
     const { user, setUser } = useContext(UserContext);
 
@@ -12,24 +18,30 @@ const NavBar = () => {
 
 
     return (
-        <nav>
-            {user ? (
+
+        <nav className={styles.container}> 
+     {user ? (
+                <>
+                    <Link to='/'> <img src={Logo} alt='An atom' /> </Link>
                 <ul>
-                    <li>Welcome, {user.username}</li>
-                    <li><Link to='/'>Dashboard (Logo/name)</Link></li>
                     <li><Link to='/jobs'>Job Cards</Link></li>
                     <li><Link to='/jobs/new'>New Job Card</Link></li>
                     <li><Link to='/' onClick={handleSignOut}>Sign Out</Link></li>
                     
-                </ul>
+                </ul>  
+                </>
             ) : (
+               <>
+                <Link to='/'><img src={Logo} alt='An atom' /></Link>
                 <ul>
-                    <li><Link to='/'>Home (Logo/name)</Link></li>
+                    
                     <li><Link to='/sign-up'>Sign Up</Link></li>
                      <li><Link to='/sign-in'>Sign In</Link></li>
                     
                 </ul>
+                </>
             )}
+            
         </nav>
     );
 };

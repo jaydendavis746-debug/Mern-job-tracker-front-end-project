@@ -1,0 +1,31 @@
+
+
+main{
+display:flex;
+flex-direction: column ;
+justify-content: center;
+align-items: center;
+
+}
+
+form{
+    display:flex;
+    align-items: center;
+}
+
+
+div{
+
+    padding-bottom: 2rem;    
+}
+
+button{
+    padding: 0.5rem;
+    border-radius: 1rem;
+    
+}
+
+button:hover{
+
+    background-color: rgba(0, 0, 255, 0.8);
+}
