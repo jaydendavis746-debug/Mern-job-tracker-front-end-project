@@ -54,7 +54,7 @@ const handleDeleteJob = async (jobId) => {
 
 const handleUpdateJob = async (jobId, jobFormData)=>{
    const updatedJob = await jobService.update(jobId, jobFormData);
-   setJobs(jobs.map((job) => (jobId === job._id ? updatedJob : job)));
+   setJobs(jobs.map((card) => (jobId === card._id ? updatedJob : card )));
    navigate(`/jobs/${jobId}`)
 
 }

@@ -94,7 +94,7 @@ const deleteJob = async (jobId) =>{
 
 
 
-const update = async (jobId, jonFormData)=>{
+const update = async (jobId, jobFormData)=>{
 
     try{
          const res = await fetch(`${BASE_URL}/${jobId}`,{
@@ -106,7 +106,7 @@ const update = async (jobId, jonFormData)=>{
             },
             body: JSON.stringify(jobFormData),
     });
-    return res.json
+    return res.json()
 } catch (err){
 
 console.log(err)

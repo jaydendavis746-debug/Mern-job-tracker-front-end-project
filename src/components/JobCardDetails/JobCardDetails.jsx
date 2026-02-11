@@ -57,7 +57,7 @@ const JobCardDetails = (props) => {
                     <h3 className="subheading">Company: {job.companyName}</h3>
                     <h3 className="subheading">Type: {job.workArrangement}</h3>
                     <h3 className="subheading">Location: {job.workArrangement !== "Remote" ? job.location : "N/A"} </h3>
-                    <h3 className="subheading">Salary: £{job.salary}</h3>
+                    <h3 className="subheading">Salary: £{job.salary} </h3>
 
                     <p>Job Type: {job.jobType}</p>
                     <p>Employer: {job.employer}</p>
