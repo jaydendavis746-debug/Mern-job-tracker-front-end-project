@@ -10,6 +10,8 @@ const JobCardDetails = (props) => {
     const [job, setJob] = useState(null);
     //console.log("Job Id:", jobId);
 
+    // const { user } = useContext(UserContext);
+
 
     
 
@@ -18,7 +20,7 @@ const JobCardDetails = (props) => {
         const fetchJob = async () => {
             const jobData = await jobService.show(jobId);
             setJob(jobData);
-        };+
+        };
 
         fetchJob();
     }, [jobId]);
@@ -48,7 +50,7 @@ const JobCardDetails = (props) => {
         <main>
             <section>
                 <header>
-                    <button ><Link to={`/jobs/${jobId}/edit`} >Edit</Link></button>
+                    <button ><Link to={`/jobs/${jobId}/edit`} >Edit Job Card</Link></button>
 
                     <label for="status">Status:</label>
                     <select name="status">
@@ -68,9 +70,10 @@ const JobCardDetails = (props) => {
                     <p>Job Type: {job.jobType}</p>
                     <p>Employer: {job.employer}</p>
 
-                    <textarea placeholder="Add Job Description"></textarea>
+                    {/* <textarea placeholder="Add Job Description"></textarea> */}
+                    <p>Job Description: {job.description}</p>
 
-                    <button onClick={()=> props.handleDeleteJob(jobId)} >Delete</button>
+                    <button onClick={()=> props.handleDeleteJob(jobId)} >Delete Job Card</button>
                 </header>
             </section>
             {/* Below are Notes */}
