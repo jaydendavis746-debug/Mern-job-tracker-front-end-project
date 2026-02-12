@@ -4,15 +4,15 @@ import { useContext } from 'react';
 
 import { UserContext } from '../../contexts/UserContext';
 
+import styles from './DashBoard.module.css'
+
 const Dashboard = () => {
   const { user } = useContext(UserContext);
 
   return (
-    <main>
+    <main className={styles.container}  >
       <h1>Welcome, {user.username}</h1>
-      <p>
-        This is the dashboard page where you can then navigate to your job cards page.
-      </p>
+      
     </main>
   );
 };

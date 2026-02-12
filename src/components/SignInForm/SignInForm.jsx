@@ -1,13 +1,14 @@
 // src/components/SignInForm/SignInForm.jsx
 
 import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, Link } from 'react-router';
 
 import { signIn } from '../../services/authService';
 
 import { UserContext } from '../../contexts/UserContext';
 
-import Styles from './SignInForm.module.css'
+import styles from './SignInForm.module.css' 
+import Logo from '../../assets/logo.svg';
 
 const SignInForm = () => {
   const navigate = useNavigate();
@@ -38,14 +39,14 @@ const SignInForm = () => {
   };
 
   return (
-    <main>
+    <main className={styles.container} >
       <h1>Sign In</h1>
       <p>{message}</p>
       <form autoComplete='off' onSubmit={handleSubmit}>
-
-      {/* <img src={Logo} alt='An atom' /> */}
-
-        <div>
+          
+      <img src={Logo} alt='An atom' />
+          
+        <div className={styles.seperation} >
           <input
             type='text'
             autoComplete='off'
@@ -57,7 +58,7 @@ const SignInForm = () => {
             placeHolder='Username'
           />
         </div>
-        <div>
+        <div className={styles.seperation} >
           <input
             type='password'
             autoComplete='off'
@@ -69,12 +70,30 @@ const SignInForm = () => {
             placeholder='Password'
           />
         </div>
-        <div>
+
+        <div className={styles.btn} >
           <button>Sign In</button>
           <button onClick={() => navigate('/')}>Cancel</button>
         </div>
+
+
+        <div >
+         <p> <Link to='/sign-up'> <strong>Create an account </strong></Link> </p>
+        </div>
+
+        <div className={styles.divider}></div>
+
+      <footer>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                <p>Velit nihil enim vero aut accusamus suscipit et in. Tenetur, ex quo?</p>
+            </footer>
+
+
       </form>
+
     </main>
+
+
   );
 };
 

@@ -61,7 +61,7 @@ const handleUpdateJob = async (jobId, jobFormData)=>{
 
   return (
     <>
-     <NavBar/>
+       {user && <NavBar/>  } 
       <Routes>
         <>
         <Route path='/' element={user ? <Dashboard />  : <Landing />} />
