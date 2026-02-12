@@ -1,14 +1,17 @@
 
 
-import { useState, useEffect } from "react";
-import { Link } from "react-router";
+import { useState, useEffect,  } from "react";
+import { Link, useLocation } from "react-router";
 import styles from "./JobCards.module.css";
 
 import * as jobService from '../../services/jobService';
 
 const statuses = ["Prospective", "Applied", "Interview", "Offer", "Rejected"];
 
-const JobCards = ({ jobs, updateJobStatus }) => {
+const JobCards = ({ jobs}) => {
+
+const location = useLocation()
+
   const [jobList, setJobList] = useState([]);
 
   useEffect(() => {
@@ -29,7 +32,7 @@ const JobCards = ({ jobs, updateJobStatus }) => {
     setJobList(updatedJobs);
 
     try {
-      await jobService.updateJobStatus(jobId, newStatus);
+      await jobService.updateJobStatus(jobId, { status: newStatus });
       
 
     } catch (error) {
@@ -42,28 +45,29 @@ const JobCards = ({ jobs, updateJobStatus }) => {
       {statuses.map((status) => (
         <section
           key={status}
-          className={styles.column}
+          className={`${styles.column } ${styles[status]} ${styles.dragover}`}
           onDragOver={(e) => e.preventDefault()}
           onDrop={(e) => handleDrop(e, status)}
           onDragEnter={(e) => e.currentTarget.classList.add(styles.activeColumn)}
           onDragLeave={(e) => e.currentTarget.classList.remove(styles.activeColumn)}
 
         >
-          <h2>{status}</h2>
+          <h2 >{status}</h2>
 
           {jobList
             .filter((job) => job.status === status)
             .map((job) => (
               <div
                 key={job._id}
-                className={styles.JobCard}
+                className={`${styles.JobCard} ${styles.dragging}` }
                 draggable
                 onDragStart={(e) => handleDragStart(e, job._id)}
               >
-                <Link to={`/jobs/${job._id}`}>
-                  <p>{job.position}</p>
-                  <p>{job.employer}</p>
-                  <p>£ {job.salary}</p>
+                <Link to={`/jobs/${job._id}`} state={{ backgroundLocation: location }} >
+                  <p className={styles.position}>{job.position}</p>
+                  <p className={styles.employer}>{job.employer}</p>
+                  <p className={styles.salary}>£ {job.salary}</p>
+
                 </Link>
               </div>
             ))}

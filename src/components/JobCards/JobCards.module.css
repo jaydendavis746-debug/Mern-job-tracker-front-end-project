@@ -2,28 +2,113 @@
 
 
 .container {
+  margin: 0;
   display: flex;
   gap: 2rem;
   padding: 2rem;
+  background-color: #f4f6f9;
+  color: #1f2937;
+  align-items: flex-start;
+  background-image: url("../../assets/bg.png");
 }
 
 .column {
   flex: 1;
-  background: #f4f4f4;
-  padding: 1rem;
+  background: #ffffff;
+  padding: 2rem;
   border: 1px solid;
-  border-radius: 1rem;
-  min-height: 400px;
+  border-radius: 2rem;
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.05);
+  min-height: 20rem;
+  display:flex;
+  flex-direction: column;
 }
 
+.column h2{
+
+  font-size: 1.5rem ;
+  font-weight:600;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  color: #6b7280;
+
+}
+
+
+
 .JobCard {
-  background: white;
-  padding: 1rem;
+  background: #ffffff;
+  padding: 1.5rem;
   margin-bottom: 1rem;
   border-radius: 2rem;
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.1) ;
+  transition: all 0.2s ease;
   cursor: grab;
+}
+
+.JobCard:hover{
+  transform: translateY(-0.4rem);
+   box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.4) ;
+
+}
+
+
+.position{
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+
+}
+
+.company{
+
+  font-size: 1.3rem;
+  color: #6b7280;
+  margin-bottom:2rem;
+}
+
+
+.salary{
+
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #059669;
+
 }
 
 .activeColumn {
   background-color: #e8f0ff;
+}
+
+
+.dragging{
+  opacity: 0.6;
+  transform: rotate(2deg);
+}
+
+.dragover{
+  background-color: #f9fafb;
+  
+}
+
+
+.Prospective{
+  border: 0.3rem dashed #3b82f6;
+}
+
+.Applied{
+  border: 0.3rem dashed #f59e0b;
+}
+
+.Interview{
+  border: 0.3rem dashed #8b5cf6;
+}
+
+.Offer{
+  border: 0.3rem dashed #10b981;
+}
+
+.Rejected{
+  border: 0.3rem dashed #ef4444;
 }

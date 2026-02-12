@@ -53,14 +53,6 @@ const JobCardDetails = (props) => {
                 <header>
                     <button ><Link to={`/jobs/${jobId}/edit`} >Edit Job Card</Link></button>
 
-                    <label for="status">Status:</label>
-                    <select name="status">
-                        <option value="Applied">Applied</option>
-                        <option value="Interviewing">Interviewing</option>
-                        <option value="Offer">Offer</option>
-                        <option value="Rejected">Rejected</option>
-                        <option value="Prospective" selected>Prospective</option>
-                    </select>
 
                     <h2>Position: {job.position.toUpperCase()}</h2>
                     <h3 className="subheading">Company: {job.companyName}</h3>
