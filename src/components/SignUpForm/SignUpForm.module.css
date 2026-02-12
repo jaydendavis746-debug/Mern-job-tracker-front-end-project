@@ -22,11 +22,11 @@ img{
 
 
 
+
 input{
     padding: 0.5rem;
     border-radius: 1rem;
 }
-
 
 .btn{
     margin-bottom: 2rem;
@@ -52,17 +52,15 @@ button:hover{
   height: 1px;
   background-color: #ddd;  
   width: 100%;               
-  margin-top: 2rem;
+   margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
 
-
-
- strong{
+.container strong{
     color: blue ;
 }
 
- strong:hover {
+.container strong:hover {
     text-decoration: underline;
 }

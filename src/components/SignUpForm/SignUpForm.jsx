@@ -1,7 +1,10 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
 import { signUp } from "../../services/authService";
 import { UserContext } from "../../contexts/UserContext";
+
+import styles from './SignUpForm.module.css'
+import Logo from '../../assets/logo.svg';
 
 const SignUpForm = () => {
     const navigate = useNavigate();
@@ -40,12 +43,15 @@ const SignUpForm = () => {
     };
 
     return (
-        <main>
+        <main className={styles.container} >
         <h1>Sign Up</h1>
         <p>{message}</p>
         <form onSubmit={handleSubmit}>
-            <div>
-            <label htmlFor="username">Username:</label>
+
+            <img src={Logo} alt='An atom' />
+
+            <div className={styles.seperation}>
+            
             <input
                 type="text"
                 id="name"
@@ -53,10 +59,10 @@ const SignUpForm = () => {
                 name="username"
                 onChange={handleChange}
                 required
+                placeholder="Username"
             />
             </div>
-            <div>
-            <label htmlFor="password">Password:</label>
+            <div className={styles.seperation}>
             <input
                 type="password"
                 id="password"
@@ -64,10 +70,10 @@ const SignUpForm = () => {
                 name="password"
                 onChange={handleChange}
                 required
+                placeholder="Password"
             />
             </div>
-            <div>
-            <label htmlFor="confirm">Confirm Password:</label>
+            <div className={styles.seperation} >
             <input
                 type="password"
                 id="confirm"
@@ -75,14 +81,29 @@ const SignUpForm = () => {
                 name="passwordConf"
                 onChange={handleChange}
                 required
+                placeholder="Confirm Password"
             />
-            </div>
-            <div>
+            </div >
+            <div className={styles.btn}>
             <button disabled={isFormInvalid()}>Sign Up</button>
             <button onClick={() => navigate("/")}>Cancel</button>
             </div>
+
+            <div>
+                <p> <Link to='/sign-in'><strong>Log in</strong></Link> </p>
+             </div>
+
+            <div className={styles.divider}></div>
+
+            <footer>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                <p>Velit nihil enim vero aut accusamus suscipit et in. Tenetur, ex quo?</p>
+            </footer>
+
         </form>
         </main>
+
+        
     );
 };
 
