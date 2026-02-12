@@ -29,7 +29,7 @@ const JobForm = (props ) => {
   
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    // console.log("Form Data:", formData);
+    
 
     if(jobId){
         props.handleUpdateJob(jobId, formData)
@@ -40,9 +40,6 @@ const JobForm = (props ) => {
     
 
   };
-
-
-
 
   useEffect(() => {
         

@@ -46,9 +46,10 @@ const JobCardDetails = (props) => {
 
 
     return (
-        // <main>Job Card</main>
+       
+
         <main>
-            <section>
+            <section  >
                 <header>
                     <button ><Link to={`/jobs/${jobId}/edit`} >Edit Job Card</Link></button>
 
@@ -77,7 +78,8 @@ const JobCardDetails = (props) => {
                 </header>
             </section>
             {/* Below are Notes */}
-            <section>
+
+            <section  >
                 <h4>Notes:</h4>
                 <NoteForm  handleAddNote={handleAddNote}/>
 
