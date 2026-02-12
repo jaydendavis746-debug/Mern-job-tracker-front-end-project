@@ -55,7 +55,7 @@ const SignInForm = () => {
             name='username'
             onChange={handleChange}
             required
-            placeHolder='Username'
+            placeholder='Username'
           />
         </div>
         <div className={styles.seperation} >
