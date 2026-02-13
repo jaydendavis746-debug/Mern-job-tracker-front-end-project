@@ -5,6 +5,8 @@ import { useParams } from 'react-router';
 
 import * as jobService from '../../services/jobService';
 
+import styles from './JobForm.module.css'
+
 const JobForm = (props ) => {
 
   const {jobId} = useParams();
@@ -14,12 +16,12 @@ const JobForm = (props ) => {
     position: "",
     companyName: "",
     salary: "",
-    jobType: "Full-time",
-    workArrangement: "In-person",
+    jobType: "",
+    workArrangement: "",
     location: "",
     description: "",
     employer: "",
-    status: "Prospective",
+    status: "",
   });
 
   const handleChange = (evt) => {
@@ -65,45 +67,46 @@ const JobForm = (props ) => {
 
 
   return (
-    <main>
+    <main className={styles.container} >
       <h1>{jobId ? 'Edit Job Card' : 'New Job Card'}</h1>
       <form onSubmit={handleSubmit}>
 
-        
-        <label htmlFor="position">Position</label>
+        <div className={styles.seperation}>
         <input
           required
           type="text"
           name="position"
           id="position"
+          placeholder='Position'
           value={formData.position}
           onChange={handleChange}
         />
-
+      </div>
         
-        <label htmlFor="company">Company Name</label>
+        <div className={styles.seperation}>
         <input
           required
           type="text"
           name="companyName"
           id="company"
+          placeholder='Company'
           value={formData.companyName}
           onChange={handleChange}
         />
-
-       
-        <label htmlFor="salary">Salary</label>
+  </div>
+       <div className={styles.seperation}>
         <input
           type="number"
           min="0"
           name="salary"
           id="salary"
+          placeholder='Salary'
           value={formData.salary}
           onChange={handleChange}
         />
-
+         </div>
        
-        <label htmlFor="type">Job Type</label>
+       <div className={styles.seperation}>
         <select
           required
           name="jobType"
@@ -111,6 +114,7 @@ const JobForm = (props ) => {
           value={formData.jobType}
           onChange={handleChange}
         >
+          <option value='' disabled hidden >Select-Type</option>
           <option value="Full-time">Full-time</option>
           <option value="Part-time">Part-time</option>
           <option value="Contract">Contract</option>
@@ -118,9 +122,9 @@ const JobForm = (props ) => {
           <option value="Temporary">Temporary</option>
           <option value="Zero-Hour">Zero-Hour</option>
         </select>
-
+         </div>
         
-        <label htmlFor="arrangement">Work Arrangement</label>
+        <div className={styles.seperation}>
         <select
           required
           name="workArrangement"
@@ -128,50 +132,55 @@ const JobForm = (props ) => {
           value={formData.workArrangement}
           onChange={handleChange}
         >
+          <option value='' disabled hidden >Select-Arrangement</option>
           <option value="Remote">Remote</option>
           <option value="In-person">In-person</option>
           <option value="Hybrid">Hybrid</option>
         </select>
-
+         </div>
        
-        <label htmlFor="location">Location</label>
+       <div className={styles.seperation}>
         <input
           type="text"
           name="location"
           id="location"
+          placeholder='Location'
           value={formData.location}
           onChange={handleChange}
         />
+         </div>
 
-        
-        <label htmlFor="description">Description</label>
+        <div className={styles.seperation}>
         <textarea
           required
           name="description"
           id="description"
+          placeholder='Job description'
           value={formData.description}
           onChange={handleChange}
         />
-
+        </div>
        
-        <label htmlFor="employer">Employer</label>
+       <div className={styles.seperation}>
         <input
           required
           type="text"
           name="employer"
           id="employer"
+          placeholder='Employer'
           value={formData.employer}
           onChange={handleChange}
         />
+         </div>
 
-        
-        <label htmlFor="status">Status</label>
+        <div className={styles.seperation}>
         <select
           name="status"
           id="status"
           value={formData.status}
           onChange={handleChange}
         >
+          <option value='' disabled hidden> Select-Status </option>
           <option value="Prospective">Prospective</option>
           <option value="Applied">Applied</option>
           <option value="Interviewing">Interviewing</option>
@@ -179,7 +188,9 @@ const JobForm = (props ) => {
           <option value="Rejected">Rejected</option>
         </select>
 
-        <button type="submit">Submit Job</button>
+         </div>
+
+        <button type="submit" className={styles.btn}   >Submit Job</button>
       </form>
     </main>
   );

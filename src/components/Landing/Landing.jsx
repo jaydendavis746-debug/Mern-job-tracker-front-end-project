@@ -13,10 +13,10 @@ const Landing = () => {
       <NavBar/>
      
       <section className={styles.hero} >
-        <h1> Welcome to CareerBoard</h1>
+        <h1> Welcome to CareerBoards</h1>
         <span  className={styles.subtitle} >  Your visual job application tracker</span>
         <p className={styles.description} > 
-          Wheter you're exploring new opporntuniteies or actively applying, <strong>CareerBoard</strong> helps you organize your job hunt with a clear, colorful board.
+          Wether you're exploring new opportunities or actively applying, <strong>CareerBoards</strong> helps you organize your job hunt with a clear, colorful board.
         </p>
       </section>
 
@@ -31,7 +31,7 @@ const Landing = () => {
       </section>
 
       <section className={styles.benefits}>
-          <h2>Why CareerBoard?</h2>
+          <h2>Why CareerBoards?</h2>
           <ul >
             <li>✅ Intuitive layout with drag-and-drop functionality</li>
             <li>✅ Real-time updates and cloud sync </li>
@@ -40,7 +40,7 @@ const Landing = () => {
       </section>
 
       <section className={styles.cta} >
-            <p>Become a user who streamlined their job search </p>
+            <p>Become a user who streamlines their job search </p>
             <button className={styles.ctaBtn}> <Link to='/sign-up'> Create Your Free Account </Link></button>
 
       </section>
