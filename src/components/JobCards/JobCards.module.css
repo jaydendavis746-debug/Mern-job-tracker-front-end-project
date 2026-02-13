@@ -3,18 +3,21 @@
 
 .container {
   margin: 0;
+  min-height: 100vh;                 
   display: flex;
   gap: 2rem;
   padding: 2rem;
-  background-color: #f4f6f9;
-  color: #1f2937;
   align-items: flex-start;
   background-image: url("../../assets/bg.png");
+  background-size: cover;            
+  background-position: center;       
+  background-repeat: no-repeat;      
+  background-attachment: fixed;      
 }
+
 
 .column {
   flex: 1;
-  background: #ffffff;
   padding: 2rem;
   border: 1px solid;
   border-radius: 2rem;
@@ -45,11 +48,12 @@
   box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.1) ;
   transition: all 0.2s ease;
   cursor: grab;
+  opacity: 0.8;
 }
 
 .JobCard:hover{
   transform: translateY(-0.4rem);
-   box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.4) ;
+   box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.8) ;
 
 }
 
@@ -84,7 +88,15 @@
 
 .dragging{
   opacity: 0.6;
-  transform: rotate(2deg);
+  transform: rotate(2deg) scale(1.02)  ;
+}
+
+.dragHandle {
+ 
+  cursor: grab;
+  font-size: 1.6rem;
+  opacity: 0.6;
+  user-select: none;
 }
 
 .dragover{
@@ -95,20 +107,26 @@
 
 .Prospective{
   border: 0.3rem dashed #3b82f6;
+  background-color: #3b82f6
 }
 
 .Applied{
   border: 0.3rem dashed #f59e0b;
+  background-color: #f59e0b ;
 }
 
-.Interview{
+.Interviewing{
   border: 0.3rem dashed #8b5cf6;
+  background-color: #8b5cf6 ;
 }
 
 .Offer{
   border: 0.3rem dashed #10b981;
+  background-color: #10b981 ;
+
 }
 
 .Rejected{
   border: 0.3rem dashed #ef4444;
+  background-color: #ef4444 ;
 }

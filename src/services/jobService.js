@@ -148,8 +148,6 @@ const updateJobStatus = async (jobId, newStatus) =>{
     })
 
     
-    // console.log("ENV:", import.meta.env.VITE_BACK_END_SERVER_URL);
-    // console.log("BASE_URL:", BASE_URL);
 
     const data = await res.json()
 

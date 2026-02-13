@@ -35,7 +35,6 @@ const NavBar = () => {
                 <Link to='/'><img src={Logo} alt='An atom' /></Link>
                 <ul>
                     
-                    <li><Link to='/sign-up'>Sign Up</Link></li>
                      <li><Link to='/sign-in'>Sign In</Link></li>
                     
                 </ul>

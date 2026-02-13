@@ -6,21 +6,39 @@ import styles from "./JobCards.module.css";
 
 import * as jobService from '../../services/jobService';
 
-const statuses = ["Prospective", "Applied", "Interview", "Offer", "Rejected"];
+const statuses = ["Prospective", "Applied", "Interviewing", "Offer", "Rejected"];
 
 const JobCards = ({ jobs}) => {
 
 const location = useLocation()
 
-  const [jobList, setJobList] = useState([]);
+const [jobList, setJobList] = useState([]);
+
+const [draggingId, setDraggingId] = useState(null);
+
 
   useEffect(() => {
     setJobList(jobs);
   }, [jobs]);
 
   const handleDragStart = (e, jobId) => {
-    e.dataTransfer.setData("jobId", jobId);
-  };
+  e.dataTransfer.setData("jobId", jobId);
+  setDraggingId(jobId);
+
+  const card = e.currentTarget.closest(`.${styles.JobCard}`);
+  if (card) {
+    e.dataTransfer.setDragImage(
+      card,
+      card.offsetWidth / 2,
+      card.offsetHeight / 2
+    );
+  }
+};
+
+const handleDragEnd = () => {
+  setDraggingId(null);
+};
+
 
   const handleDrop = async (e, newStatus) => {
     const jobId = e.dataTransfer.getData("jobId");
@@ -32,10 +50,11 @@ const location = useLocation()
     setJobList(updatedJobs);
 
     try {
-      await jobService.updateJobStatus(jobId, { status: newStatus });
+      await jobService.updateJobStatus(jobId, newStatus );
       
 
     } catch (error) {
+
       console.error("Failed to update job:", error);
     }
   };
@@ -59,17 +78,23 @@ const location = useLocation()
             .map((job) => (
               <div
                 key={job._id}
-                className={`${styles.JobCard} ${styles.dragging}` }
-                draggable
-                onDragStart={(e) => handleDragStart(e, job._id)}
+                className={`${styles.JobCard} ${draggingId === job._id ? styles.dragging : ""} `}
               >
-                <Link to={`/jobs/${job._id}`} state={{ backgroundLocation: location }} >
-                  <p className={styles.position}>{job.position}</p>
-                  <p className={styles.employer}>{job.employer}</p>
-                  <p className={styles.salary}>£ {job.salary}</p>
+                 <div
+                    className={styles.dragHandle}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, job._id)}
+                    onDragEnd={handleDragEnd}
+                  >
+                    ⠿
+                </div>
+                  <Link to={`/jobs/${job._id}`} state={{ backgroundLocation: location }} >
+                    <p className={styles.position}>{job.position}</p>
+                    <p className={styles.employer}>{job.employer}</p>
+                    <p className={styles.salary}>£ {job.salary}</p>
 
-                </Link>
-              </div>
+                  </Link>
+                </div>
             ))}
         </section>
       ))}

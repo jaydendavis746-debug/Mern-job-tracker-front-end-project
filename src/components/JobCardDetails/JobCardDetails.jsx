@@ -5,14 +5,14 @@ import NoteForm from "../NoteForm/NoteForm"
 
 import { UserContext } from "../../contexts/UserContext";
 
+import styles from './JobCardDetails.module.css'
+
+// className={styles.}
+// <> </>
+
 const JobCardDetails = (props) => {
     const { jobId } = useParams();
     const [job, setJob] = useState(null);
-    //console.log("Job Id:", jobId);
-
-    // const { user } = useContext(UserContext);
-
-
     
 
     useEffect(() => {
@@ -48,8 +48,8 @@ const JobCardDetails = (props) => {
     return (
        
 
-        <main>
-            <section  >
+        <main className={styles.container} >  
+            <section className={styles.info} >
                 <header>
                     <button ><Link to={`/jobs/${jobId}/edit`} >Edit Job Card</Link></button>
 
@@ -69,10 +69,8 @@ const JobCardDetails = (props) => {
                     <button onClick={()=> props.handleDeleteJob(jobId)} >Delete Job Card</button>
                 </header>
             </section>
-            {/* Below are Notes */}
 
-            <section  >
-                <h4>Notes:</h4>
+            <section className={styles.notes} >
                 <NoteForm  handleAddNote={handleAddNote}/>
 
               {job.notes.length === 0
