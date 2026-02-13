@@ -30,7 +30,7 @@ const NavBar = () => {
                 <>
                     <Link to='/'> 
                     <div className={styles.logo}>
-                        <h2>CB</h2>
+                        <span>CB</span>
                         <h3>CAREERBOARDS</h3>
                     </div>  
                     </Link>

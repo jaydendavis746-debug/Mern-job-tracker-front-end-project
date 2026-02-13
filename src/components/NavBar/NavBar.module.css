@@ -24,7 +24,7 @@
   font-family: 'Poppins', 'Inter', sans-serif;
 }
 
-/* Rounded square icon */
+
 .logoIcon {
   width: 40px;
   height: 40px;
@@ -43,7 +43,7 @@
   letter-spacing: -0.5px;
 }
 
-/* Wordmark */
+
 .logo h3 {
   margin: 0;
   font-size: 1.15rem;
@@ -52,7 +52,7 @@
   letter-spacing: 0.3px;
 }
 
-/* Hover effect */
+
 .logo:hover .logoIcon {
   transform: translateY(-1px);
   transition: transform 0.2s ease;
