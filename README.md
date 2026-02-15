@@ -242,7 +242,7 @@ The backend repository can be found here:
 # 👤 Author
 
 * Built by **jaydendavis746-debug** as a MERN portfolio project.
-* With the collaboration of Ranjith-Jacob with the sign-up and sign-in routes
+* With the collaboration of ranjith-jacob 
 
 
 ---
