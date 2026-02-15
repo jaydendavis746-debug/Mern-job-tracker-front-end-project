@@ -1,4 +1,12 @@
+# CareerBoards - Deployement link 
+`https://careerboards.netlify.app`
 
+---
+
+# CareerBoards - project planning link
+`https://trello.com/b/2VkWT1zl/job-tacker-project-plan`
+
+---
 
 # 🎯 CareerBoards – Frontend
 
