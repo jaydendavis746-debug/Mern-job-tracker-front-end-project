@@ -113,6 +113,8 @@ const handleUpdateJob = async (jobId, jobFormData) => {
       <Route path="/sign-in" element={<SignInForm />} />
     </>
   )}
+
+    <Route path="*" element={<h2>Whoops, you shouldn't be here!</h2>} />
 </Routes>
 
     {backgroundLocation && user && (

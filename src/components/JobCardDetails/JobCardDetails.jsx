@@ -7,26 +7,39 @@ import { UserContext } from "../../contexts/UserContext";
 
 import styles from './JobCardDetails.module.css'
 
-// className={styles.}
-// <> </>
 
 const JobCardDetails = (props) => {
     const { jobId } = useParams();
     const [job, setJob] = useState(null);
+    const [notFound, setNotFound] = useState(false);
     
 
     useEffect(() => {
-        
         const fetchJob = async () => {
-            const jobData = await jobService.show(jobId);
-            setJob(jobData);
+
+           try {
+                const jobData = await jobService.show(jobId);
+
+            if(!jobData || !jobData._id || !jobData.position){
+                setNotFound(true);
+            } else {
+                setJob(jobData);
+            }
+        } catch (err){
+            console.log(err)
+            setNotFound(true)
+        }
+
         };
 
         fetchJob();
     }, [jobId]);
 
-    //console.log("Job state:", job);
-    
+    if(notFound) return(
+         <main>No job found</main>
+    );
+
+
     if (!job) return (
         <main>Loading...</main>
     );
@@ -54,7 +67,9 @@ const JobCardDetails = (props) => {
                     <button ><Link to={`/jobs/${jobId}/edit`} >Edit Job Card</Link></button>
 
 
-                    <h2>Position: {job.position.toUpperCase()}</h2>
+                    <h2>
+                        Position: {job.position ? job.position.toUpperCase() : "N/A"}
+                    </h2>
                     <h3 className="subheading">Company: {job.companyName}</h3>
                     <h3 className="subheading">Type: {job.workArrangement}</h3>
                     <h3 className="subheading">Location: {job.workArrangement !== "Remote" ? job.location : "N/A"} </h3>
@@ -63,7 +78,6 @@ const JobCardDetails = (props) => {
                     <p>Job Type: {job.jobType}</p>
                     <p>Employer: {job.employer}</p>
 
-                    {/* <textarea placeholder="Add Job Description"></textarea> */}
                     <p>Job Description: {job.description}</p>
 
                     <button onClick={()=> props.handleDeleteJob(jobId)} >Delete Job Card</button>
@@ -73,9 +87,9 @@ const JobCardDetails = (props) => {
             <section className={styles.notes} >
                 <NoteForm  handleAddNote={handleAddNote}/>
 
-              {job.notes.length === 0
-                     ? (<p>There are no notes.</p>
-                ):(
+              {!job.notes || job.notes.length === 0 ? (
+                    <p>There are no notes.</p>
+              ) : (
                      job.notes.map((note) => (
                     <article key={note._id}>
                         <div>
