@@ -4,7 +4,7 @@ import { signUp } from "../../services/authService";
 import { UserContext } from "../../contexts/UserContext";
 
 import styles from './SignUpForm.module.css'
-import Logo from '../../assets/logo.svg';
+import Logo from '../../assets/logo.png';
 
 const SignUpForm = () => {
     const navigate = useNavigate();
@@ -96,8 +96,7 @@ const SignUpForm = () => {
             <div className={styles.divider}></div>
 
             <footer>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                <p>Velit nihil enim vero aut accusamus suscipit et in. Tenetur, ex quo?</p>
+               <p>© {new Date().getFullYear()} CareerBoard. Built to help you track, organize, and land your next opportunity.</p>
             </footer>
 
         </form>

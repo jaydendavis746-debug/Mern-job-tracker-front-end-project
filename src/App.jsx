@@ -1,6 +1,6 @@
 
 import { useContext, useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router";
+import { Routes, Route, useNavigate , useLocation} from "react-router";
 
 import NavBar from "./components/NavBar/NavBar";
 import SignUpForm from "./components/SignUpForm/SignUpForm";
@@ -10,6 +10,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import JobCards from "./components/JobCards/JobCards";
 import JobCardDetails from "./components/JobCardDetails/JobCardDetails";
 import JobForm from"./components/JobForm/JobForm"; 
+import Modal from "./components/Modal/Modal";
 
 import { UserContext } from "./contexts/UserContext";
 
@@ -18,8 +19,11 @@ import * as jobService from './services/jobService';
 
 const App = () => {
 
+const location = useLocation();
+const state = location.state;
+const backgroundLocation = state && state.backgroundLocation;
 
-  const {user} = useContext(UserContext);
+const {user} = useContext(UserContext);
 
   const [jobs, setJobs] = useState([]);
 
@@ -52,36 +56,79 @@ const handleDeleteJob = async (jobId) => {
 };
 
 
-const handleUpdateJob = async (jobId, jobFormData)=>{
-   const updatedJob = await jobService.update(jobId, jobFormData);
-   setJobs(jobs.map((job) => (jobId === job._id ? updatedJob : job)));
-   navigate(`/jobs/${jobId}`)
+const handleUpdateJob = async (jobId, jobFormData) => {
+  await jobService.update(jobId, jobFormData);
 
+  const updatedJobs = await jobService.index();
+  setJobs(updatedJobs);
+
+  navigate('/jobs');
 };
+
+
 
   return (
     <>
-       {user && <NavBar/>  } 
-      <Routes>
-        <>
-        <Route path='/' element={user ? <Dashboard />  : <Landing />} />
-        </>
-        {user ? (
-          <>
-          
-            <Route path='/jobs' element={< JobCards jobs={jobs} />} />
-            <Route path='/jobs/:jobId' element={<JobCardDetails handleDeleteJob={handleDeleteJob} />} />
-            <Route path='/jobs/new' element={< JobForm handleAddJob={handleAddJob}  />} />
-            <Route path='/jobs/:jobId/edit' element={< JobForm handleUpdateJob={handleUpdateJob} />} />
-          </>
-        ) : (
-          <>
-            <Route path='/sign-up' element={<SignUpForm />} />
-            <Route path='/sign-in' element={<SignInForm />} />
-          </>
-        )}
-      </Routes>
+       {user && <NavBar />}
+
+<Routes location={backgroundLocation || location}>
+  <Route
+    path="/"
+    element={user ? <Dashboard /> : <Landing />}
+  />
+
+  {user ? (
+    <>
+      <Route
+        path="/jobs"
+        element={<JobCards jobs={jobs} />}
+      />
+
+      <Route
+        path="/jobs/:jobId"
+        element={
+          <JobCardDetails
+            handleDeleteJob={handleDeleteJob}
+          />
+        }
+      />
+
+      <Route
+        path="/jobs/new"
+        element={
+          <JobForm handleAddJob={handleAddJob} />
+        }
+      />
+
+      <Route
+        path="/jobs/:jobId/edit"
+        element={
+          <JobForm handleUpdateJob={handleUpdateJob} />
+        }
+      />
     </>
+  ) : (
+    <>
+      <Route path="/sign-up" element={<SignUpForm />} />
+      <Route path="/sign-in" element={<SignInForm />} />
+    </>
+  )}
+
+    <Route path="*" element={<h2>Whoops, you shouldn't be here!</h2>} />
+</Routes>
+
+    {backgroundLocation && user && (
+      <Routes>
+        <Route
+          path="/jobs/:jobId" element={ <Modal> <JobCardDetails handleDeleteJob={handleDeleteJob}/> </Modal>
+          }
+        />
+      </Routes>
+    )}
+
+</>
+
+   
   );
 };
 
