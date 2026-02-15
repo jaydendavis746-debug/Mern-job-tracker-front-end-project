@@ -8,7 +8,7 @@ import { signIn } from '../../services/authService';
 import { UserContext } from '../../contexts/UserContext';
 
 import styles from './SignInForm.module.css' 
-import Logo from '../../assets/logo.svg';
+import Logo from '../../assets/logo.png';
 
 const SignInForm = () => {
   const navigate = useNavigate();
@@ -27,10 +27,9 @@ const SignInForm = () => {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      // This function doesn't exist yet, but we'll create it soon.
-      // It will cause an error right now
+     
       const signedInUser = await signIn(formData);
-
+      
       setUser(signedInUser);
       navigate('/');
     } catch (err) {
@@ -55,7 +54,7 @@ const SignInForm = () => {
             name='username'
             onChange={handleChange}
             required
-            placeHolder='Username'
+            placeholder='Username'
           />
         </div>
         <div className={styles.seperation} >
@@ -84,9 +83,8 @@ const SignInForm = () => {
         <div className={styles.divider}></div>
 
       <footer>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                <p>Velit nihil enim vero aut accusamus suscipit et in. Tenetur, ex quo?</p>
-            </footer>
+            <p>© {new Date().getFullYear()} CareerBoard. Built to help you track, organize, and land your next opportunity.</p>    
+      </footer>
 
 
       </form>

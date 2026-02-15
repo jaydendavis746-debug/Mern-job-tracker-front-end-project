@@ -56,7 +56,6 @@ h4 {
 
 p {
   margin: 0;
-  opacity: 0.4;
   width: 100%;
   font-size: 16px;
   text-align: justify;
@@ -64,7 +63,6 @@ p {
 }
 
 a {
-  color: black;
   font-weight: 600;
   text-decoration: none;
 }

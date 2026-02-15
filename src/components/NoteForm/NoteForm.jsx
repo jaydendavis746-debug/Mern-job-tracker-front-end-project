@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+import styles from './NoteForm.module.css'
+
 const NoteForm = (props) => {
   const [formData, setFormData] = useState({ text: '' });
 
@@ -17,17 +19,20 @@ const NoteForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor='text-input'>Add note:</label>
+    <main className={styles.container} >
+    <form onSubmit={handleSubmit}  className={styles.form} >
+      
       <textarea
         required
         name='text'
         id='text-input'
+        placeholder='Add Note'
         value={formData.text}
         onChange={handleChange}
       />
       <button type='submit'>Add Note</button>
     </form>
+    </main>
   );
 };
 

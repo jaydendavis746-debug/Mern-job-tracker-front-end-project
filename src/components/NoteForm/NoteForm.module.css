@@ -1,0 +1,12 @@
+
+
+.form {
+  border: none;
+  outline: none;
+  box-shadow: none; 
+}
+
+textArea{
+    padding: 0.7rem;
+    border-radius: 1rem;
+}
