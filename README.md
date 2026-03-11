@@ -1,5 +1,5 @@
 # CareerBoards - Deployement link 
-[https://careerboards.netlify.app](https://careerboards.netlify.app)
+[CareerBoards](https://careerboards.netlify.app)
 
 ---
 
@@ -233,7 +233,7 @@ Make sure the backend server is running.
 # 🔗 Backend Repository
 
 The backend repository can be found here:
-👉 [https://github.com/jaydendavis746-debug/Mern-job-tracker-back-end-project](https://github.com/jaydendavis746-debug/Mern-job-tracker-back-end-project)
+👉 [job-tracker-back-end-project](https://github.com/jaydendavis746-debug/Mern-job-tracker-back-end-project)
 
 ---
 
