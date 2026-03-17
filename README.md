@@ -1,3 +1,6 @@
+
+<img width="1900" height="904" alt="careerboards" src="https://github.com/user-attachments/assets/bb0f3269-21d3-43de-a8a0-ef62ae2fb46a" />
+
 # CareerBoards - Deployement link 
 [CareerBoards](https://careerboards.netlify.app)
 
