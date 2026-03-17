@@ -4,7 +4,7 @@
 ---
 
 # CareerBoards - project planning link
-[https://trello.com/b/2VkWT1zl/job-tacker-project-plan](https://trello.com/b/2VkWT1zl/job-tacker-project-plan)
+[trello](https://trello.com/b/2VkWT1zl/job-tacker-project-plan)
 
 ---
 
